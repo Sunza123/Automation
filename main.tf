@@ -30,7 +30,7 @@ resource "proxmox_vm_qemu" "master01" {
 
   connection {
     type     = "ssh"
-    user     = "terraform-prov"
+    user     = "bodhi"
     password = var.ssh_pass
     host     = self.default_ipv4_address
   }
