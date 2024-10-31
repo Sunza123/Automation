@@ -12,7 +12,7 @@ resource "proxmox_vm_qemu" "master01" {
   scsihw      = "virtio-scsi-pci"
   os_type     = "ubuntu"
   bootdisk    = "scsi0"
-  ipconfig0   = "192.168.1.201/24,gw=192.168.1.245"
+  ipconfig0   = "192.168.1.201/24,gw=192.168.1.254"
   network {
     bridge = var.nic_name
     model  = "virtio"
