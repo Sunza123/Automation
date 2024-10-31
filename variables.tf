@@ -24,8 +24,13 @@ variable "proxmox_api_token_secret" {
   type      = string
   sensitive = true
 }
+#ssh username
+variable "proxmox_tf_user" {
+  type      = string
+  sensitive = true
+}
 #etered manually during apply
-variable "ssh_pass" {
+variable "proxmox_tf_pass" {
   type      = string
   sensitive = true
 }

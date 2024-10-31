@@ -12,7 +12,7 @@ resource "proxmox_vm_qemu" "master01" {
   scsihw      = "virtio-scsi-pci"
   os_type     = "ubuntu"
   bootdisk    = "scsi0"
-  ipconfig0 = "192.168.1.20${count.index + 1}/24,gw=192.168.1.245"
+  ipconfig0   = "192.168.1.201/24,gw=192.168.1.245"
   network {
     bridge = var.nic_name
     model  = "virtio"
@@ -30,8 +30,8 @@ resource "proxmox_vm_qemu" "master01" {
 
   connection {
     type     = "ssh"
-    user     = "bodhi"
-    password = var.ssh_pass
+    user     = var.proxmox_tf_user
+    password = var.proxmox_tf_pass
     host     = self.default_ipv4_address
   }
 }
