@@ -10,19 +10,22 @@ resource "proxmox_vm_qemu" "master01" {
   cpu         = "host"
   memory      = 2048
   scsihw      = "virtio-scsi-pci"
-  os_type     = "ubuntu"
+  os_type     = "cloud-init"
   bootdisk    = "scsi0"
-  ipconfig0   = "ip=192.168.1.201/24,gw=192.168.1.254"
+  ipconfig0   = "ip=192.168.1.201/24"
+  
   network {
     bridge = var.nic_name
     model  = "virtio"
   }
+
   disks {
     scsi {
       scsi0 {
         disk {
           storage = "Virtual-Machines"
           size    = 25
+          emulatessd = true
         }
       }
     }
